@@ -126,7 +126,12 @@ init_db()
 # ------------------------
 # Load YOLO model
 # ------------------------
-model = YOLO("best.pt")
+import os
+
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+MODEL_PATH = os.path.join(BASE_DIR, "best.pt")
+
+model = YOLO(MODEL_PATH)
 
 # ------------------------
 # Prediction API
@@ -233,4 +238,4 @@ def get_detections():
 # Run server
 # ------------------------
 if __name__ == "__main__":
-    app.run(debug=True)
+    app.run(host="0.0.0.0", port=10000)
