@@ -46,11 +46,13 @@ function App() {
     const formData = new FormData();
     formData.append("file", file);
 
-    const response = await fetch("https://automated-forensic-evidence-detection.onrender.com/predict", {
-      // const response = await fetch("https://object-detection-final-year-backend-1.onrender.com/predict", {
-      method: "POST",
-      body: formData,
-    });
+const response = await fetch(
+  "https://automated-forensic-evidence-detection.onrender.com/predict",
+  {
+    method: "POST",
+    body: formData,
+  }
+);
 
     if (!response.ok) {
       const text = await response.text();

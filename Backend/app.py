@@ -92,6 +92,9 @@ from uuid import uuid4
 app = Flask(__name__)
 CORS(app)
 
+@app.route("/")
+def home():
+    return "API running"
 UPLOAD_FOLDER = "uploads"
 os.makedirs(UPLOAD_FOLDER, exist_ok=True)
 
@@ -238,4 +241,6 @@ def get_detections():
 # Run server
 # ------------------------
 if __name__ == "__main__":
-    app.run(host="0.0.0.0", port=10000)
+    import os
+    port = int(os.environ.get("PORT", 10000))
+    app.run(host="0.0.0.0", port=port)
